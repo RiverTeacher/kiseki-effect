@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄赤</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .monkey {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('monkey.png'); /* 猿の画像を指定 */
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function createMonkey() {
+            const monkey = document.createElement('div');
+            monkey.classList.add('monkey');
+
+            const maxX = window.innerWidth - 100; // 画面の幅から要素の幅を引く
+            const maxY = window.innerHeight - 100; // 画面の高さから要素の高さを引く
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            monkey.style.left = `${randomX}px`;
+            monkey.style.top = `${randomY}px`;
+
+            document.body.appendChild(monkey);
+
+            setTimeout(() => {
+                monkey.remove(); // 猿を削除する
+            }, 5000); // 5秒後に削除
+        }
+
+        setInterval(createMonkey, 100); // 0.1秒ごとに猿を作成
+    </script>
+</body>
+</html>
